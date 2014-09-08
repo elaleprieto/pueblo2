@@ -1,0 +1,25 @@
+/* line 4, ../../sass/tracks/add.sass */
+input[type=checkbox] {
+  margin-right: 5px;
+}
+
+/* line 7, ../../sass/tracks/add.sass */
+.tagsinput span.tag {
+  border-radius: 5px;
+}
+
+/* line 10, ../../sass/tracks/add.sass */
+.datos .row {
+  margin-bottom: 10px;
+}
+
+/* line 13, ../../sass/tracks/add.sass */
+.highlight {
+  background-color: yellow;
+  color: black;
+}
+
+/* line 17, ../../sass/tracks/add.sass */
+.hidden {
+  display: none;
+}

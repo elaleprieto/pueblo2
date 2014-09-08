@@ -1,0 +1,15 @@
+/* line 3, ../../sass/categories/view.sass */
+h6 {
+  color: white;
+}
+
+/* line 6, ../../sass/categories/view.sass */
+.videos > .row {
+  margin-bottom: 15px;
+  overflow: hidden;
+}
+/* line 11, ../../sass/categories/view.sass */
+.videos > .row img {
+  min-height: 85px;
+  max-height: 85px;
+}

@@ -1,0 +1,127 @@
+@import colors, compass
+
+a
+	color: $azul
+	
+	&:hover
+		color: $azulClaro
+		text-decoration: none !important
+
+body
+	background-color: $violeta !important
+	background:
+		image: image-url('backgrounds/backPC.jpg')
+		repeat: no-repeat
+		position: top left
+	// +background-size(cover)
+	// +background-size(100% 120%)
+	color: $black
+
+footer
+	margin-top: 50px
+	padding: 30px 15px 60px 15px	
+
+h1.category
+	margin-top: -6px
+	
+	& > .label-default
+		background-color: black
+		color: $naranja
+		font-weight: normal
+
+h3, h5
+	color: $naranja
+	font-weight: bold
+	margin: 0
+	
+	& > a
+		color: $naranja
+
+hr.grisOscuro
+	border-color: $grisOscuro !important
+
+.auspiciantes
+	margin-bottom: 30px
+
+.categories-menu
+	margin-bottom: 10px
+	
+	& > span
+		padding: 15px
+
+.checkbox
+	color: $grisDefault
+	
+
+.container
+	background-color: $lila
+	min-height: 480px
+	padding: 20px
+	
+
+.dropdown-menu > li > a:hover
+	background-color: $grisOscuro
+	color: $white
+
+.list-undecorated
+	list-style: none
+	
+.logo-superior
+	margin-bottom: 20px
+	
+	.img-responsive
+		width: 100px		
+
+.menu-sm
+	font-size: 0.9em
+	
+	i
+		margin-right: 0.5em
+		text-align: center
+		width: 1.4em
+
+.nav-categorias
+	position: relative
+	z-index: -1
+
+.nav-tabs
+	font-weight: bold
+	
+	& > li > a:hover
+		background-color: $naranja
+
+.navbar-form
+	margin: 4px
+
+.navbar-inverse
+	background-color: $blackNavbar !important
+
+.navbar-top
+	+background-image(linear-gradient($naranjaOscuro, $naranja))
+	background-color: $naranja
+	border-bottom-color: $naranjaOscuro
+	border-bottom-width: 10px
+	-moz-border-radius-bottomright: 70%
+	-webkit-border-bottom-right-radius: 70%
+	border-bottom-right-radius: 70%
+	-moz-border-radius-bottomleft: 70%
+	-webkit-border-bottom-left-radius: 70%
+	border-bottom-left-radius: 70%
+
+.navbar-out
+	background-color: $azul
+	border-bottom-color: $azul
+	border-bottom-width: 10px
+	-moz-border-radius-bottomright: 70%
+	-webkit-border-bottom-right-radius: 70%
+	border-bottom-right-radius: 70%
+	-moz-border-radius-bottomleft: 70%
+	-webkit-border-bottom-left-radius: 70%
+	border-bottom-left-radius: 70%
+	height: 90px
+	margin-bottom: 15px
+	position: relative
+	z-index: 1000
+
+.text-grisOscuro
+	color: $grisOscuro

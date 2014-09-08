@@ -1,0 +1,85 @@
+/* line 4, ../sass/inicio.sass */
+h5 {
+  margin-bottom: 15px;
+}
+
+/* line 10, ../sass/inicio.sass */
+.carousel-indicators {
+  bottom: auto;
+  top: 20px;
+}
+
+/* line 14, ../sass/inicio.sass */
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  margin-left: auto;
+  margin-right: auto;
+  float: none;
+  height: 300px;
+  max-height: 300px;
+}
+
+/* line 21, ../sass/inicio.sass */
+.carousel-caption {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0px, rgba(0, 0, 0, 0.5)), color-stop(100%, transparent));
+  background-image: -webkit-linear-gradient(rgba(0, 0, 0, 0.5) 0px, transparent 100%);
+  background-image: -moz-linear-gradient(rgba(0, 0, 0, 0.5) 0px, transparent 100%);
+  background-image: -o-linear-gradient(rgba(0, 0, 0, 0.5) 0px, transparent 100%);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5) 0px, transparent 100%);
+  bottom: -15px;
+  left: 10%;
+  padding-left: 10px;
+  padding-right: 10px;
+  right: 10%;
+  width: 80%;
+}
+
+/* line 30, ../sass/inicio.sass */
+.portada {
+  height: 80px;
+}
+
+/* line 33, ../sass/inicio.sass */
+.slogan {
+  margin-top: 5px;
+}
+
+/* line 36, ../sass/inicio.sass */
+.video {
+  background-image: url('/img/backgrounds/abstractBackgroundReverse.jpg?1379108999');
+  background-repeat: no-repeat;
+  background-position: top left;
+  -webkit-background-size: 100% 120%;
+  -moz-background-size: 100% 120%;
+  -o-background-size: 100% 120%;
+  background-size: 100% 120%;
+}
+
+/* line 44, ../sass/inicio.sass */
+.videoRow {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(30%, transparent), color-stop(85%, #00496d), color-stop(100%, #00496d));
+  background-image: -webkit-linear-gradient(transparent 30%, #00496d 85%, #00496d 100%);
+  background-image: -moz-linear-gradient(transparent 30%, #00496d 85%, #00496d 100%);
+  background-image: -o-linear-gradient(transparent 30%, #00496d 85%, #00496d 100%);
+  background-image: linear-gradient(transparent 30%, #00496d 85%, #00496d 100%);
+  -webkit-box-shadow: 0px 0px 5px black;
+  -moz-box-shadow: 0px 0px 5px black;
+  box-shadow: 0px 0px 5px black;
+  border: 1px solid black;
+  height: 165px;
+}
+
+/* line 51, ../sass/inicio.sass */
+.videoText {
+  padding: 10px 0;
+  font-family: "Dosis", sans-serif;
+}
+
+/* line 56, ../sass/inicio.sass */
+.videoThumb {
+  padding: 10px 0;
+}
+/* line 59, ../sass/inicio.sass */
+.videoThumb img {
+  min-height: 85px;
+  max-height: 85px;
+}

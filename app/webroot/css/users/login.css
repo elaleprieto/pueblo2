@@ -1,0 +1,21 @@
+/* line 2, ../../sass/users/login.sass */
+#submitButton {
+  background-color: #9aba42;
+  border: 0;
+  color: white;
+  min-width: 65px;
+  padding: 5px;
+  width: 30%;
+}
+
+/* line 10, ../../sass/users/login.sass */
+#submitDiv {
+  margin-top: 30px;
+  text-align: center;
+}
+
+/* line 14, ../../sass/users/login.sass */
+.title {
+  border-bottom: 1px solid;
+  font: 2em "Existence";
+}

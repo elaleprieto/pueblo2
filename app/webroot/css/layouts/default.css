@@ -1,0 +1,173 @@
+/* line 3, ../../sass/layouts/default.sass */
+a {
+  color: #0054a6;
+}
+/* line 6, ../../sass/layouts/default.sass */
+a:hover {
+  color: #008ed3;
+  text-decoration: none !important;
+}
+
+/* line 10, ../../sass/layouts/default.sass */
+body {
+  background-color: #774d81 !important;
+  background-image: url('/img/backgrounds/backPC.jpg?1410136253');
+  background-repeat: no-repeat;
+  background-position: top left;
+  color: black;
+}
+
+/* line 20, ../../sass/layouts/default.sass */
+footer {
+  margin-top: 50px;
+  padding: 30px 15px 60px 15px;
+}
+
+/* line 24, ../../sass/layouts/default.sass */
+h1.category {
+  margin-top: -6px;
+}
+/* line 27, ../../sass/layouts/default.sass */
+h1.category > .label-default {
+  background-color: black;
+  color: #fd8d46;
+  font-weight: normal;
+}
+
+/* line 32, ../../sass/layouts/default.sass */
+h3, h5 {
+  color: #fd8d46;
+  font-weight: bold;
+  margin: 0;
+}
+/* line 37, ../../sass/layouts/default.sass */
+h3 > a, h5 > a {
+  color: #fd8d46;
+}
+
+/* line 40, ../../sass/layouts/default.sass */
+hr.grisOscuro {
+  border-color: #9d9c9d !important;
+}
+
+/* line 43, ../../sass/layouts/default.sass */
+.auspiciantes {
+  margin-bottom: 30px;
+}
+
+/* line 46, ../../sass/layouts/default.sass */
+.categories-menu {
+  margin-bottom: 10px;
+}
+/* line 49, ../../sass/layouts/default.sass */
+.categories-menu > span {
+  padding: 15px;
+}
+
+/* line 52, ../../sass/layouts/default.sass */
+.checkbox {
+  color: #333333;
+}
+
+/* line 56, ../../sass/layouts/default.sass */
+.container {
+  background-color: rgba(255, 255, 255, 0.6);
+  min-height: 480px;
+  padding: 20px;
+}
+
+/* line 62, ../../sass/layouts/default.sass */
+.dropdown-menu > li > a:hover {
+  background-color: #9d9c9d;
+  color: white;
+}
+
+/* line 66, ../../sass/layouts/default.sass */
+.list-undecorated {
+  list-style: none;
+}
+
+/* line 69, ../../sass/layouts/default.sass */
+.logo-superior {
+  margin-bottom: 20px;
+}
+/* line 72, ../../sass/layouts/default.sass */
+.logo-superior .img-responsive {
+  width: 100px;
+}
+
+/* line 75, ../../sass/layouts/default.sass */
+.menu-sm {
+  font-size: 0.9em;
+}
+/* line 78, ../../sass/layouts/default.sass */
+.menu-sm i {
+  margin-right: 0.5em;
+  text-align: center;
+  width: 1.4em;
+}
+
+/* line 83, ../../sass/layouts/default.sass */
+.nav-categorias {
+  position: relative;
+  z-index: -1;
+}
+
+/* line 87, ../../sass/layouts/default.sass */
+.nav-tabs {
+  font-weight: bold;
+}
+/* line 90, ../../sass/layouts/default.sass */
+.nav-tabs > li > a:hover {
+  background-color: #fd8d46;
+}
+
+/* line 93, ../../sass/layouts/default.sass */
+.navbar-form {
+  margin: 4px;
+}
+
+/* line 96, ../../sass/layouts/default.sass */
+.navbar-inverse {
+  background-color: #080808 !important;
+}
+
+/* line 99, ../../sass/layouts/default.sass */
+.navbar-top {
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #994717), color-stop(100%, #fd8d46));
+  background-image: -webkit-linear-gradient(#994717, #fd8d46);
+  background-image: -moz-linear-gradient(#994717, #fd8d46);
+  background-image: -o-linear-gradient(#994717, #fd8d46);
+  background-image: linear-gradient(#994717, #fd8d46);
+  background-color: #fd8d46;
+  border-bottom-color: #994717;
+  border-bottom-width: 10px;
+  -moz-border-radius-bottomright: 70%;
+  -webkit-border-bottom-right-radius: 70%;
+  border-bottom-right-radius: 70%;
+  -moz-border-radius-bottomleft: 70%;
+  -webkit-border-bottom-left-radius: 70%;
+  border-bottom-left-radius: 70%;
+}
+
+/* line 111, ../../sass/layouts/default.sass */
+.navbar-out {
+  background-color: #0054a6;
+  border-bottom-color: #0054a6;
+  border-bottom-width: 10px;
+  -moz-border-radius-bottomright: 70%;
+  -webkit-border-bottom-right-radius: 70%;
+  border-bottom-right-radius: 70%;
+  -moz-border-radius-bottomleft: 70%;
+  -webkit-border-bottom-left-radius: 70%;
+  border-bottom-left-radius: 70%;
+  height: 90px;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1000;
+}
+
+/* line 126, ../../sass/layouts/default.sass */
+.text-grisOscuro {
+  color: #9d9c9d;
+}
