@@ -11,8 +11,10 @@ class KalturaComponent extends Component {
 	# LibreKaltura.com.ar
 	// public $adminSecret = '9d964723786318b4cd579f9b53d2e7e5'; # Usuario: Ale
 	// public $partnerId = '106';
-	public $adminSecret = '8b1d810ab96230b4d156f10c89f2e818'; # Usuario: contacto@tramaaudiovisual.com.ar
-	public $partnerId = '113';
+	// public $adminSecret = '8b1d810ab96230b4d156f10c89f2e818'; # Usuario: contacto@tramaaudiovisual.com.ar
+	public $adminSecret = '391ebbafd24f6c56a92f40a83e35708f'; # Usuario: Pueblo Coop
+	// public $partnerId = '113';
+	public $partnerId = '114';
 	
 	public $url = 'http://190.57.232.122';
 	
@@ -180,7 +182,8 @@ class KalturaComponent extends Component {
 	// public function getUrlEmbed($partnerId = null, $entry_id = '0_i5u1lyhc', $configId = '11170242') {
 	// public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170242') {
 	// public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170250') { // reproductor con nombre "escondido"
-	public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170280') {
+	// public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170280') {
+	public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170285') {
 		# reproductor con nombre "Trama escondido" = 11170280
 		
 		if(!$partnerId)
