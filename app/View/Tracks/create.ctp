@@ -6,7 +6,7 @@ echo $this->Html->script(array(
 	, 'vendor/jquery.tagsinput'
 	, 'vendor/bootstrap-datepicker'
 	, 'vendor/angular-strap.min'
-	, 'tracks/create'
+	// , 'tracks/create'
 ), array('inline' => false));
 ?>
 

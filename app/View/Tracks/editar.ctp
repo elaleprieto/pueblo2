@@ -2,7 +2,7 @@
 // debug($this->data, $showHtml = null, $showFrom = true);
 
 echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput'));
-echo $this->Html->script(array('tracks/create'), array('inline' => false));
+// echo $this->Html->script(array('tracks/create'), array('inline' => false));
 
 if($this->data['Track']['visit'] != '0000-00-00')
 	$visit = $this->Time->format($this->data['Track']['visit'], '%d-%m-%Y');
