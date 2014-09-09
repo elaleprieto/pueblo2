@@ -1,4 +1,4 @@
-App = angular.module('App', [])
+App = angular.module('App', ['$strap.directives'])
 
 ### *******************************************************************************************************************
       Tracks
@@ -63,3 +63,4 @@ App.controller 'TracksController', ($scope, $http, $timeout) ->
 	$timeout () -> 
 		$scope.init()
 	, 200
+	

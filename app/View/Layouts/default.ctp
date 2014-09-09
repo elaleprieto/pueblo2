@@ -187,8 +187,12 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 
 		<?php
 		echo $this->Html->script(array(
-			'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-			'vendor/bootstrap.min'
+			'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
+			, 'vendor/bootstrap.min'
+			, '//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
+			, 'vendor/angular-strap.min'
+			, 'vendor/bootstrap-datepicker'
+			// , 'operaciones.min'
 		));
 		echo $this->fetch('script');
 		?>

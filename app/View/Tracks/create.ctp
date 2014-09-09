@@ -1,14 +1,16 @@
 <?php
-echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput'));
+echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput', 'vendor/bootstrap-datepicker'));
 echo $this->Html->script(array(
-	'//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js',
-	'angular/controllers',
-	'vendor/jquery.tagsinput',
-	'tracks/create'
+	'//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
+	, 'angular/controllers'
+	, 'vendor/jquery.tagsinput'
+	, 'vendor/bootstrap-datepicker'
+	, 'vendor/angular-strap.min'
+	, 'tracks/create'
 ), array('inline' => false));
 ?>
 
-<div id="inicio" ng-app="App" ng-controller="TracksController">
+<div id="inicio" data-ng-app="App" data-ng-controller="TracksController">
 	<!-- <div class="row">
 		<div class="col-sm-12">
 			<span class="alert alert-{{mensaje.tag}} pull-left" ng-show='mensaje.text' ng-bind="mensaje.text" ng-class=""></span>
@@ -30,7 +32,7 @@ echo $this->Html->script(array(
 			<?php echo $this->Form->create('Track', array(
 				'id' => 'formulario',
 				'name' => 'formulario',
-				'ng-submit' => 'submit($event)'
+				'data-ng-submit' => 'submit($event)'
 			));
  ?>
 	<!-- 
@@ -74,15 +76,19 @@ echo $this->Html->script(array(
 					<input id="tags1" class="tags" name="data[Track][tags]" value="etiqueta" type="text" />
 				</div> -->
 				<?php 
-				echo $this->Form->input('visit', array(
-					'autocomplete' => false,
-					'class' => 'col-sm-12 form-control',
-					'div' => 'col-sm-4',
-					'label' => false,
-					// 'placeholder' => 'Localidad',
-					// 'type' => 'text'
-				));
+				// echo $this->Form->input('visit', array(
+				// 	'autocomplete' => false,
+				// 	'class' => 'col-sm-12 form-control',
+				// 	'div' => 'col-sm-4',
+				// 	'label' => false,
+				// 	// 'placeholder' => 'Localidad',
+				// 	// 'type' => 'text'
+				// ));
 				?>
+				<div class="input-group col-sm-4">
+					<input class="form-control col-sm-8" type="text" name="data[Track][visit]" value="{{visi}t}" data-ng-model="visit" data-date-format="dd-mm-yyyy" bs-datepicker />
+					<span class="input-group-addon" data-toggle="datepicker"><i class="fa fa-calendar"></i></span>
+				</div>
 				<div class="col-sm-4">
 					<div class="row">
 						<?php
@@ -93,7 +99,7 @@ echo $this->Html->script(array(
 							'label' => false,
 							'placeholder' => 'Video ID',
 							'required' => 'required',
-							'x-ng-model' => 'entryId'
+							'data-ng-model' => 'entryId'
 						));
 						?>
 					</div>
@@ -115,7 +121,7 @@ echo $this->Html->script(array(
 					Haga clic en "Next" dos veces y luego podrá guardar la ficha.
 					Si desea cargar otro video, haga clic <a href="/tracks/create" target="_blank">aquí</a>.
 				</p>
-				<button class="btn col-sm-2 col-sm-offset-5" type="submit" x-ng-disabled="!entryId">
+				<button class="btn col-sm-2 col-sm-offset-5" type="submit" data-ng-disabled="!entryId">
 					<?php echo __('Guardar'); ?>
 				</button>
 			</div>

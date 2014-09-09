@@ -123,10 +123,12 @@ class TracksController extends AppController {
 			$this->autoRender = false;
 			$track = $this->request->data;
 			$track['Track']['user_id'] = $this->Auth->user('id');
+			$fecha = DateTime::createFromFormat('j-m-Y', $track['Track']['visit']);
+			$track['Track']['visit'] = $fecha->format('Y-m-d');
 			$this->Track->create();
 			if ($this->Track->save($track)) {
 				$trackId = $this->Track->id;
-				$this->Track->Tag->setTags($trackId, explode(',', $track['Track']['tags']));
+				// $this->Track->Tag->setTags($trackId, explode(',', $track['Track']['tags']));
 				$this->Session->setFlash(__('The track has been saved'));
 				return true;
 			} else {

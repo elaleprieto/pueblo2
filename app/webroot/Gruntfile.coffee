@@ -10,7 +10,7 @@ module.exports = (grunt) ->
 			build: {
 				# src: 'js/<%= pkg.name %>.js',
 				# dest: 'js/<%= pkg.name %>.min.js'
-				src: 'js/*.js',
+				src: ['js/*.js', 'js/vendor/*.js'],
 				dest: 'js/operaciones.min.js'
 			}
 		}
