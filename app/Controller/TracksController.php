@@ -373,10 +373,12 @@ class TracksController extends AppController {
  * @return void
  */
 	public function search($query = null) {
-		// debug($this->request->data);
+		// debug($this->request->query['v']);
+		$query = isset($this->request->query['q']) ? $this->request->query['q'] : false;
+		$visit = isset($this->request->query['v']) ? $this->request->query['v'] : false;
 		// debug($this->request->query['q']);
 		// if($query || $query = isset($this->request->data['query']) ? $this->request->data['query'] : false) {
-		if($query || $query = isset($this->request->query['q']) ? $this->request->query['q'] : false) {
+		if($query || $visit) {
 			// $options['joins'] = array(array('table' => 'tags_tracks'
 			// 		, 'alias' => 'TagsTrack'
 			// 		, 'type' => 'left'
@@ -399,11 +401,12 @@ class TracksController extends AppController {
 			// 	)
 			// );
 			
-			$this->request->data['query'] = $query;
+			$this->request->data['query'] = $query ? $query : $visit;
 			$query = strtolower($query);
 			$query = explode(' ', $query); 
 			
 			$orConditions = array();
+			$andConditions = array();
 			
 			# Se agregan estas restricciones porque quieren buscar solo en el titulo y en etiquetas
 			// array_push($orConditions, array('lower(Tag.title) LIKE' => "%$query%"));
@@ -414,26 +417,25 @@ class TracksController extends AppController {
 				# Por título se busca siempre
 				array_push($orConditions, array('lower(Track.title) LIKE' => "%$queryString%"));
 
-				# Si está seleccionado el checkbox Etiquetas => t=1
+				# Si está seleccionado el checkbox Descripción => d=1
 				if(isset($this->request->query['d']) && $this->request->query['d'] == 1)
 					array_push($orConditions, array('lower(Track.description) LIKE' => "%$queryString%"));
 				
-				# Si está seleccionado el checkbox Categorias => c=1
+				# Si está seleccionado el checkbox Localidad => l=1
 				if(isset($this->request->query['l']) && $this->request->query['l'] == 1)
 					array_push($orConditions, array('lower(Track.localidad) LIKE' => "%$queryString%"));
-				
-				# Si está seleccionado el checkbox Usuarios => u=1
-				if(isset($this->request->query['f']) && $this->request->query['f'] == 1)
-					array_push($orConditions, array('lower(Track.visit) =' => "%$queryString%"));
-				
-				// array_push($orConditions, array('lower(Track.presentacion) LIKE' => "%$queryString%"));
 			endforeach;
 			
-			$options['conditions'] = array('OR' => $orConditions);
+			if($visit):
+				$visitAux = DateTime::createFromFormat('j-m-Y', $visit);
+				array_push($andConditions, array('Track.visit =' => $visitAux->format('Y-m-d')));
+			endif;
+
+			$options['conditions'] = array('AND' => $andConditions, array('OR' => $orConditions));
 			$options['group'] = array('Track.id');
-			
+			$options['recursive'] = -1;
+
 			$this->set('tracks', $this->Track->find('all', $options));
-			
 		}
 	}
 

@@ -1,15 +1,8 @@
 <?php
 // debug($this->data, $showHtml = null, $showFrom = true);
 
-echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput', 'vendor/bootstrap-datepicker'));
-echo $this->Html->script(array(
-	'//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
-	, 'angular/controllers'
-	, 'vendor/jquery.tagsinput'
-	, 'vendor/bootstrap-datepicker'
-	, 'vendor/angular-strap.min'
-	, 'tracks/create'
-), array('inline' => false));
+echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput'));
+echo $this->Html->script(array('tracks/create'), array('inline' => false));
 
 if($this->data['Track']['visit'] != '0000-00-00')
 	$visit = $this->Time->format($this->data['Track']['visit'], '%d-%m-%Y');
@@ -17,7 +10,7 @@ else
 	$visit = date('d-m-Y');
 ?>
 
-<div id="inicio" ng-app="App" ng-controller="TracksController">
+<div id="inicio" data-ng-controller="TracksController">
 	<div class="row">
 		<div class="col-sm-12">
 			<span class="alert alert-{{mensaje.tag}} pull-left" ng-show='mensaje.text' ng-bind="mensaje.text" ng-class=""></span>

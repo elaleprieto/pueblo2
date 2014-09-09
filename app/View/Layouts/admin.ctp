@@ -17,10 +17,12 @@
  * @license       http://www.opensource.org/licenses/mit-license.php MIT License
  */
 
-$cakeDescription = __d('cake_dev', 'Trama Audiovisual');
+$cakeDescription = __d('cake_dev', 'Pueblo Cooperativo 2014');
+$siteName = __d('site_name', 'Pueblo.Coop');
+$siteLink = __d('site_link', 'http://pueblo.coop');
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="es-ES">
 	<head>
 		<?php echo $this->Html->charset(); ?>
 		<title> <?php echo $cakeDescription ?>:
@@ -28,10 +30,12 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<?php
-		echo $this->Html->meta('icon');
+		// echo $this->Html->meta('icon');
+		echo $this->Html->meta('favicon.ico', '/favicon.ico', array('type' => 'icon'));
 		echo $this->Html->css(array(
-			'vendor/bootstrap.min',
-			'layouts/default'
+			'vendor/bootstrap.min'
+			, 'layouts/default'
+			, 'vendor/bootstrap-datepicker'
 		));
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -46,7 +50,7 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 	</head>
-	<body>
+	<body data-ng-app="App">
 		<div class="container">
 
 			<!-- Logo -->
@@ -75,8 +79,8 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 								
 								<ul class="list-group menu-sm">
 									<li class="list-group-item">
-										<a href="http://www.tramaaudiovisual.com.ar" target="_blank"> 
-											<i class="fa fa-home"></i> <?php echo __('Trama Audiovisual'); ?>
+										<a href="<?php echo $siteLink ?>" target="_blank"> 
+											<i class="fa fa-home"></i> <?php echo $siteName ?>
 										</a>
 									</li>
 									<li class="list-group-item">
@@ -113,8 +117,8 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 							<?php else: ?>
 								<ul class="list-group menu-sm">
 									<li class="list-group-item">
-										<a href="http://www.tramaaudiovisual.com.ar" target="_blank"> 
-											<i class="fa fa-home"></i> <?php echo __('Trama Audiovisual'); ?>
+										<a href="<?php echo $siteLink ?>" target="_blank"> 
+											<i class="fa fa-home"></i> <?php echo $siteName ?>
 										</a>
 									</li>
 									<li class="list-group-item">
@@ -141,13 +145,13 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 								<div class="form-group">
 									<input type="text" name="q" class="form-control" placeholder="<?php echo __('Buscar'); ?>">
 								</div>
-								<span class="text-grisOscuro">Buscar por:</span>
+								<span class="">Buscar por:</span>
 								<ul class="list-undecorated">
 									<li>
 										<div class="form-group">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" name="c" value="1"> Categorías
+													<input type="checkbox" name="d" value="1"> Descripción
 												</label>
 											</div>
 										</div>
@@ -156,18 +160,22 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 										<div class="form-group">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" name="t" value="1"> Etiquetas
+													<input type="checkbox" name="l" value="1"> Localidad
 												</label>
 											</div>
 										</div>
 									</li>
 									<li>
-										<div class="form-group">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="u" value="1"> Usuarios
-												</label>
-											</div>
+										<div class="input-group">
+											<input class="form-control col-sm-8" type="text" name="v" 
+												value="{{visit}}" 
+												data-ng-model="visit" 
+												data-date-format="dd-mm-yyyy"
+												placeholder="Día de Visita" 
+												bs-datepicker />
+											<span class="input-group-addon" data-toggle="datepicker">
+												<i class="fa fa-calendar"></i>
+											</span>
 										</div>
 									</li>
 								</ul>
@@ -191,52 +199,18 @@ $cakeDescription = __d('cake_dev', 'Trama Audiovisual');
 		<!-- footer -->
 		<footer class="navbar-inverse">
 
-			<!-- Logos de auspiciantes -->
-			<div class="row auspiciantes">
-				<div class="col-sm-1 col-sm-offset-4 text-center">
-					<?php
-					echo $this->Html->link($this->Html->image('logos/usinademedios.png', array(
-						'alt' => 'Usina de Medios',
-						'border' => '0',
-						'class' => 'img-responsive'
-					)), 'http://www.usinademedios.org.ar/', array(
-						'escape' => false,
-						'target' => '_blank'
-					));
-					?>
-				</div>
-				<!-- Descomentar si se quiere el logo de TDA de vuelta -->
-				<!-- ojo con el col-sm-2 que también se comenta -->
-				<!--
-				<div class="col-sm-2 text-center">
-				<?php
-				// echo  $this->Html->image('logos/Ausp-TDA-120.png'
-				//	, array('alt' => 'tda', 'border' => '0'));
-				?>
-				</div>
-				<div class="col-sm-2 text-center">
-				-->
-				<div class="col-sm-2 col-sm-offset-2 text-center">
-					<?php
-					echo $this->Html->link($this->Html->image('logos/geomedio.png', array(
-						'alt' => 'GeoMedio',
-						'border' => '0',
-						'class' => 'img-responsive'
-					)), 'http://www.geomedio.com.ar/', array(
-						'escape' => false,
-						'target' => '_blank'
-					));
-					?>
-				</div>
-			</div>
 		</footer>
 
 		<?php echo $this->element('sql_dump'); ?>
 
 		<?php
 		echo $this->Html->script(array(
-			'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js',
-			'vendor/bootstrap.min'
+			'//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js'
+			, 'vendor/bootstrap.min'
+			, '//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
+			, 'vendor/angular-strap.min'
+			, 'vendor/bootstrap-datepicker'
+			, 'angular/controllers'
 		));
 		echo $this->fetch('script');
 		?>

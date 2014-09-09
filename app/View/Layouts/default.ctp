@@ -32,8 +32,9 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 		// echo $this->Html->meta('icon');
 		echo $this->Html->meta('favicon.ico', '/favicon.ico', array('type' => 'icon'));
 		echo $this->Html->css(array(
-			'vendor/bootstrap.min',
-			'layouts/default'
+			'vendor/bootstrap.min'
+			, 'layouts/default'
+			, 'vendor/bootstrap-datepicker'
 		));
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -48,7 +49,7 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
 
 	</head>
-	<body>
+	<body data-ng-app="App">
 		<nav class="navbar navbar-inverse" role="navigation">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="<?php echo $siteLink ?>">
@@ -152,12 +153,16 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 										</div>
 									</li>
 									<li>
-										<div class="form-group">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox" name="f" value="1"> Fecha
-												</label>
-											</div>
+										<div class="input-group">
+											<input class="form-control col-sm-8" type="text" name="v" 
+												value="{{visit}}" 
+												data-ng-model="visit" 
+												data-date-format="dd-mm-yyyy"
+												placeholder="Día de Visita" 
+												bs-datepicker />
+											<span class="input-group-addon" data-toggle="datepicker">
+												<i class="fa fa-calendar"></i>
+											</span>
 										</div>
 									</li>
 								</ul>
@@ -192,6 +197,8 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 			, '//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
 			, 'vendor/angular-strap.min'
 			, 'vendor/bootstrap-datepicker'
+			, 'angular/controllers'
+			// , 'vendor/jquery.tagsinput'
 			// , 'operaciones.min'
 		));
 		echo $this->fetch('script');
