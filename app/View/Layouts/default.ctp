@@ -137,7 +137,7 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 										<div class="form-group">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" name="c" value="1"> Categorías
+													<input type="checkbox" name="d" value="1"> Descripción
 												</label>
 											</div>
 										</div>
@@ -146,7 +146,7 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 										<div class="form-group">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" name="t" value="1"> Etiquetas
+													<input type="checkbox" name="l" value="1"> Localidad
 												</label>
 											</div>
 										</div>
@@ -155,7 +155,7 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 										<div class="form-group">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox" name="u" value="1"> Usuarios
+													<input type="checkbox" name="f" value="1"> Fecha
 												</label>
 											</div>
 										</div>

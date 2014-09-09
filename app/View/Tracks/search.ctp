@@ -15,11 +15,9 @@ if(isset($this->request->data['query'])):
 					<table class="table">
 						<thead>
 							<th>Título</th>
-							<th>Duración</th>
-							<th>Formato</th>
-							<th>Categoría</th>
-							<th>Etiquetas</th>
-							<th>Medio</th>
+							<th>Descripción</th>
+							<th>Localidad</th>
+							<th>Fecha</th>
 							<th>Acciones</th>
 						</thead>
 						<tbody>
@@ -31,27 +29,13 @@ if(isset($this->request->data['query'])):
 										</a>
 									</td>
 									<td>
-										<?php echo $track['Track']['duracion']; ?>
+										<?php echo $track['Track']['description']; ?>
 									</td>
 									<td>
-										<?php echo $track['Track']['formato']; ?>
+										<?php echo $track['Track']['localidad']; ?>
 									</td>
 									<td>
-										<?php
-										foreach ($track['Category'] as $category) :
-											echo $category['title'];
-										endforeach;
-										?>
-									</td>
-									<td>
-										<?php foreach ($track['Tag'] as $tag): ?>
-											<a href="/buscar/<?php echo $tag['title']; ?>?t=1">
-												<?php echo $tag['title'] . ' '; ?>
-											</a>
-										<?php endforeach; ?>
-									</td>
-									<td>
-										<?php echo $track['User']['name']; ?>
+										<?php echo $track['Track']['visit'] != '0000-00-00' ? $this->Time->format($track['Track']['visit'], '%d-%m-%Y') : '-'; ?>
 									</td>
 									<td>
 										<a href="/tracks/view/<?php echo $track['Track']['id']; ?>" class="btn btn-default">

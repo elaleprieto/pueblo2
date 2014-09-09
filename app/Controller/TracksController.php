@@ -377,27 +377,27 @@ class TracksController extends AppController {
 		// debug($this->request->query['q']);
 		// if($query || $query = isset($this->request->data['query']) ? $this->request->data['query'] : false) {
 		if($query || $query = isset($this->request->query['q']) ? $this->request->query['q'] : false) {
-			$options['joins'] = array(array('table' => 'tags_tracks'
-					, 'alias' => 'TagsTrack'
-					, 'type' => 'left'
-					, 'conditions' => array('Track.id = TagsTrack.track_id')
-				)
-				, array('table' => 'tags'
-					, 'alias' => 'Tag'
-					, 'type' => 'left'
-					, 'conditions' => array('TagsTrack.tag_id = Tag.id')
-				)
-				, array('table' => 'categories_tracks'
-					, 'alias' => 'CategoriesTrack'
-					, 'type' => 'left'
-					, 'conditions' => array('Track.id = CategoriesTrack.track_id')
-				)
-				, array('table' => 'categories'
-					, 'alias' => 'Category'
-					, 'type' => 'left'
-					, 'conditions' => array('CategoriesTrack.category_id = Category.id')
-				)
-			);
+			// $options['joins'] = array(array('table' => 'tags_tracks'
+			// 		, 'alias' => 'TagsTrack'
+			// 		, 'type' => 'left'
+			// 		, 'conditions' => array('Track.id = TagsTrack.track_id')
+			// 	)
+			// 	, array('table' => 'tags'
+			// 		, 'alias' => 'Tag'
+			// 		, 'type' => 'left'
+			// 		, 'conditions' => array('TagsTrack.tag_id = Tag.id')
+			// 	)
+			// 	, array('table' => 'categories_tracks'
+			// 		, 'alias' => 'CategoriesTrack'
+			// 		, 'type' => 'left'
+			// 		, 'conditions' => array('Track.id = CategoriesTrack.track_id')
+			// 	)
+			// 	, array('table' => 'categories'
+			// 		, 'alias' => 'Category'
+			// 		, 'type' => 'left'
+			// 		, 'conditions' => array('CategoriesTrack.category_id = Category.id')
+			// 	)
+			// );
 			
 			$this->request->data['query'] = $query;
 			$query = strtolower($query);
@@ -415,16 +415,16 @@ class TracksController extends AppController {
 				array_push($orConditions, array('lower(Track.title) LIKE' => "%$queryString%"));
 
 				# Si está seleccionado el checkbox Etiquetas => t=1
-				if(isset($this->request->query['t']) && $this->request->query['t'] == 1)
-					array_push($orConditions, array('lower(Tag.title) LIKE' => "%$queryString%"));
+				if(isset($this->request->query['d']) && $this->request->query['d'] == 1)
+					array_push($orConditions, array('lower(Track.description) LIKE' => "%$queryString%"));
 				
 				# Si está seleccionado el checkbox Categorias => c=1
-				if(isset($this->request->query['c']) && $this->request->query['c'] == 1)
-					array_push($orConditions, array('lower(Category.title) LIKE' => "%$queryString%"));
+				if(isset($this->request->query['l']) && $this->request->query['l'] == 1)
+					array_push($orConditions, array('lower(Track.localidad) LIKE' => "%$queryString%"));
 				
 				# Si está seleccionado el checkbox Usuarios => u=1
-				if(isset($this->request->query['u']) && $this->request->query['u'] == 1)
-					array_push($orConditions, array('lower(User.name) LIKE' => "%$queryString%"));
+				if(isset($this->request->query['f']) && $this->request->query['f'] == 1)
+					array_push($orConditions, array('lower(Track.visit) =' => "%$queryString%"));
 				
 				// array_push($orConditions, array('lower(Track.presentacion) LIKE' => "%$queryString%"));
 			endforeach;
