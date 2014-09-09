@@ -51,16 +51,14 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 
 	</head>
 	<body data-ng-app="App">
-		<div class="container">
-
-			<!-- Logo -->
-			<div class="row">
-				<div class="col-sm-12">
-					<a href="http://www.tramaaudiovisual.com.ar">
-						<img class="img-responsive logo-superior" src="/img/logos/bannerTrama.png" />
-					</a>
-				</div>
+		<nav class="navbar navbar-inverse" role="navigation">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="<?php echo $siteLink ?>">
+					<?php echo $this->Html->image('logos/logoPC315.png') ?>
+				</a>
 			</div>
+		</nav>
+		<div class="container">
 			<div class="row">
 				<div class="col-sm-10">
 					<?php echo $this->fetch('content'); ?>
@@ -197,7 +195,7 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 		</div>
 
 		<!-- footer -->
-		<footer class="navbar-inverse">
+		<footer>
 
 		</footer>
 
