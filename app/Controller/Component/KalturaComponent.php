@@ -12,9 +12,11 @@ class KalturaComponent extends Component {
 	// public $adminSecret = '9d964723786318b4cd579f9b53d2e7e5'; # Usuario: Ale
 	// public $partnerId = '106';
 	// public $adminSecret = '8b1d810ab96230b4d156f10c89f2e818'; # Usuario: contacto@tramaaudiovisual.com.ar
-	public $adminSecret = '391ebbafd24f6c56a92f40a83e35708f'; # Usuario: Pueblo Coop
+	// public $adminSecret = '391ebbafd24f6c56a92f40a83e35708f'; # Usuario: Pueblo Coop
+	public $adminSecret = 'f678d1b962c44ae6af5bf78ae1c07778'; # Usuario: Pueblo Coop
 	// public $partnerId = '113';
-	public $partnerId = '114';
+	// public $partnerId = '114';
+	public $partnerId = '115';
 	
 	public $url = 'http://190.57.232.122';
 	
