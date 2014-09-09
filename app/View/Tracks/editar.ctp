@@ -1,22 +1,23 @@
 <?php
-echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput'));
+// debug($this->data, $showHtml = null, $showFrom = true);
+
+echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput', 'vendor/bootstrap-datepicker'));
 echo $this->Html->script(array(
-	'//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js',
-	'angular/controllers',
-	'vendor/jquery.tagsinput',
-	'tracks/create'
+	'//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
+	, 'angular/controllers'
+	, 'vendor/jquery.tagsinput'
+	, 'vendor/bootstrap-datepicker'
+	, 'vendor/angular-strap.min'
+	, 'tracks/create'
 ), array('inline' => false));
+
+if($this->data['Track']['visit'] != '0000-00-00')
+	$visit = $this->Time->format($this->data['Track']['visit'], '%d-%m-%Y');
+else
+	$visit = date('d-m-Y');
 ?>
 
 <div id="inicio" ng-app="App" ng-controller="TracksController">
-	<!-- <div class="row">
-		<div class="col-sm-12">
-			<span class="alert alert-{{mensaje.tag}} pull-left" ng-show='mensaje.text' ng-bind="mensaje.text" ng-class=""></span>
-			<a href="/listado" class="btn btn-primary pull-right">
-				Ver listado
-			</a>
-		</div>
-	</div> -->
 	<div class="row">
 		<div class="col-sm-12">
 			<span class="alert alert-{{mensaje.tag}} pull-left" ng-show='mensaje.text' ng-bind="mensaje.text" ng-class=""></span>
@@ -75,15 +76,28 @@ echo $this->Html->script(array(
 					<input id="tags1" class="tags" name="data[Track][tags]" value="etiqueta" type="text" />
 				</div> -->
 				<?php 
-				echo $this->Form->input('visit', array(
-					'autocomplete' => false,
-					'class' => 'col-sm-12 form-control',
-					'div' => 'col-sm-4',
-					'label' => false,
-					// 'placeholder' => 'Localidad',
-					// 'type' => 'text'
-				));
+				// echo $this->Form->input('visit', array(
+				// 	'autocomplete' => false,
+				// 	'class' => 'col-sm-12 form-control',
+				// 	'div' => 'col-sm-4',
+				// 	'label' => false,
+				// 	// 'placeholder' => 'Localidad',
+				// 	// 'type' => 'text'
+				// ));
 				?>
+
+				<!-- Datepicker -->
+				<div class="input-group col-sm-4">
+					<input class="form-control col-sm-8" type="text" name="data[Track][visit]" 
+						value="{{visit}}" 
+						data-ng-model="visit" 
+						data-date-format="dd-mm-yyyy" 
+						data-ng-init="visit='<?php echo $visit ?>'" 
+						bs-datepicker />
+					<span class="input-group-addon" data-toggle="datepicker"><i class="fa fa-calendar"></i></span>
+				</div>
+				
+				<!-- EntryID -->
 				<div class="col-sm-4">
 					<div class="row">
 						<?php

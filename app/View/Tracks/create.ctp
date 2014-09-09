@@ -86,7 +86,12 @@ echo $this->Html->script(array(
 				// ));
 				?>
 				<div class="input-group col-sm-4">
-					<input class="form-control col-sm-8" type="text" name="data[Track][visit]" value="{{visi}t}" data-ng-model="visit" data-date-format="dd-mm-yyyy" bs-datepicker />
+					<input class="form-control col-sm-8" type="text" name="data[Track][visit]" 
+						value="{{visit}}" 
+						data-ng-model="visit" 
+						data-date-format="dd-mm-yyyy" 
+						data-ng-init="visit='<?php echo date('d-m-Y') ?>'"
+						bs-datepicker />
 					<span class="input-group-addon" data-toggle="datepicker"><i class="fa fa-calendar"></i></span>
 				</div>
 				<div class="col-sm-4">
