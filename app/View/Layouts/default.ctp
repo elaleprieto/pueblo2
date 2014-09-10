@@ -115,11 +115,11 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 											<i class="fa fa-film"></i> <?php echo __('Producciones'); ?>
 										</a>
 									</li>
-									<li class="list-group-item">
+									<!-- <li class="list-group-item">
 										<a href="/users/login"> 
 											<i class="fa fa-user"></i> <?php echo __('Ingresar'); ?>
 										</a>
-									</li>
+									</li> -->
 								</ul>
 							<?php endif; ?>
 						</div>
