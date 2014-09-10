@@ -1,10 +1,10 @@
 @import colors, compass
 
 a
-	color: $azul
+	color: $link
 	
 	&:hover
-		color: $azulClaro
+		color: $linkHover
 		text-decoration: none !important
 
 body
@@ -16,6 +16,11 @@ body
 	// +background-size(cover)
 	// +background-size(100% 120%)
 	color: $black
+
+	& > .container
+		background-color: $lila
+		min-height: 480px
+		padding: 20px
 
 footer
 	margin-top: 50px
@@ -35,7 +40,10 @@ h3, h5
 	margin: 0
 	
 	& > a
-		color: $naranja
+		color: $link
+
+		&:hover
+			color: $linkHover
 
 hr.grisOscuro
 	border-color: $grisOscuro !important
@@ -55,12 +63,6 @@ ul.list-undecorated
 
 .checkbox
 	color: $grisDefault
-	
-
-.container
-	background-color: $lila
-	min-height: 480px
-	padding: 20px
 	
 
 .dropdown-menu > li > a:hover
@@ -94,11 +96,19 @@ ul.list-undecorated
 	& > li > a:hover
 		background-color: $naranja
 
+.navbar
+	border-radius: 0px !important
+
 .navbar-form
 	margin: 4px
 
 .navbar-inverse
 	background-color: $blackNavbar !important
+	height: 50px
+
+	& .navbar-brand
+		padding-top: 5px
+		padding-bottom: 5px
 
 .navbar-top
 	+background-image(linear-gradient($naranjaOscuro, $naranja))

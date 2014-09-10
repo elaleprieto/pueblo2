@@ -1,5 +1,5 @@
 <?php
-echo $this->Html->css(array('vendor/bootstrap.min', 'tracks/iframe', 'http://fonts.googleapis.com/css?family=Dosis'), null, array('inline' => true));
+echo $this->Html->css(array('vendor/bootstrap.min', 'tracks/iframe', 'http://fonts.googleapis.com/css?family=Rokkitt:400,700'), null, array('inline' => true));
 $cantidad = 9;
 $tracks = $this->requestAction(Router::url(array('controller' => 'tracks', 'action' => 'iframe', $cantidad)));
 // debug($tracks);
@@ -24,7 +24,7 @@ $tracks = $this->requestAction(Router::url(array('controller' => 'tracks', 'acti
 								<?php echo $tracks[$i]['Track']['title'] ?>
 							</a>
 						</h3>
-						<p><?php echo $tracks[$i]['Track']['description'] ?></p>
+						<p><?php echo ucfirst($tracks[$i]['Track']['description']) ?></p>
 				 	</div>
 			<?php if (($i + 1) % 3 == 0 || $i == sizeof($tracks) - 1): ?>
 				</div>

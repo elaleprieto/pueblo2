@@ -52,11 +52,13 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 	</head>
 	<body data-ng-app="App">
 		<nav class="navbar navbar-inverse" role="navigation">
+		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="<?php echo $siteLink ?>">
 					<?php echo $this->Html->image('logos/logoPC315.png') ?>
 				</a>
 			</div>
+		</div>
 		</nav>
 		<div class="container">
 			<div class="row">
