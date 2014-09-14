@@ -43,7 +43,7 @@ class TracksController extends AppController {
 		}
 		$options = array('conditions' => array('Track.' . $this->Track->primaryKey => $id));
 		$track = $this->Track->find('first', $options);
-		
+
 		if($entryId = $track['Track']['entryId']):
 			$kClient = $this->Kaltura->getKalturaClient();
 			$type = $this->Kaltura->getType($entryId);
@@ -123,15 +123,17 @@ class TracksController extends AppController {
 		if ($this->request->is('post')):
 			$this->autoRender = false;
 			$track = $this->request->data;
+			// debug($track, $showHtml = null, $showFrom = true);
+			// return ;
 			$track['Track']['user_id'] = $this->Auth->user('id');
 			$fecha = DateTime::createFromFormat('j-m-Y', $track['Track']['visit']);
 			$track['Track']['visit'] = $fecha->format('Y-m-d');
 			$this->Track->create();
-			if ($this->Track->save($track, true, array('title', 'description', 'localidad', 'visit', 'entryId', 'user_id'))):
+			if ($this->Track->save($track, true, array('title', 'description', 'localidad', 'visit', 'category', 'entryId', 'user_id'))):
 				$trackId = $this->Track->id;
 
 				# Si se subió una imagen, se la acondiciona para guardarla con el nombre del id del track creado.
-				if(isset($this->data['Track']['image']['name'])):
+				if(isset($this->data['Track']['image']['name']) && $this->data['Track']['image']['name'] != ''):
 					$filename = explode(".", $this->data['Track']['image']['name']);
 					$filenameext = $filename[count($filename)-1];
 					$image = IMAGES.'tracks/images/'.$trackId.'.'.$filenameext;
@@ -167,9 +169,11 @@ class TracksController extends AppController {
 		if ($this->request->is('post') || $this->request->is('put')):
 			$track = $this->request->data;
 			$track['Track']['titulo'] = $track['Track']['title'];
-			if ($this->Track->save($track)):
+			// if ($this->Track->save($track)):
+			debug($track, $showHtml = null, $showFrom = true);
+			if ($this->Track->save($track, true, array('title', 'description', 'localidad', 'visit', 'category', 'entryId', 'user_id'))):
 				# Si se subió una imagen, se la acondiciona para guardarla con el nombre del id del track creado.
-				if(isset($this->data['Track']['image']['name'])):
+				if(isset($this->data['Track']['image']['name']) && $this->data['Track']['image']['name'] != ''):
 					$filename = explode(".", $this->data['Track']['image']['name']);
 					$filenameext = $filename[count($filename)-1];
 					$image = IMAGES.'tracks/images/'.$id.'.'.$filenameext;
@@ -280,12 +284,15 @@ class TracksController extends AppController {
  * @param array excluded: ids de los excluidos
  * @return void
  */
-	public function iframe($cantidad = null) {
+	public function iframe($cantidad = null, $category = null) {
 		if (!$cantidad) {
 			throw new NotFoundException(__('Invalid track'));
 		}
 		
 		$options['conditions'] = array('Track.destacado' => true);
+
+		if($category)
+			$options['conditions'] = array_merge($options['conditions'], array('Track.category' => $category));
 		
 		$options['limit'] = $cantidad;
 		$options['order'] = 'RAND()';

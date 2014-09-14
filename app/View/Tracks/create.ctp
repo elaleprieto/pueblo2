@@ -9,7 +9,7 @@
 	
 	<h2><?php echo __('Cargador'); ?></h2>
 	<hr />
-	<div class="row datos">
+	<div class="row datos">	
 		<div class="col-sm-12">
 			<?php
 			echo $this->Form->create('Track', array('id' => 'formulario'
@@ -19,7 +19,29 @@
 				)
 			);
 			?>
-			
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary active">
+							<input type="radio" name="data[Track][category]" value="1" id="TrackCategory1" checked> Taller de Televisión
+						</label>
+						<label class="btn btn-primary">
+							<input type="radio" name="data[Track][category]" value="2" id="TrackCategory2"> Taller de Gráfica
+						</label>
+						<label class="btn btn-primary">
+							<input type="radio" name="data[Track][category]" value="5" id="TrackCategory5"> Taller de Radio
+						</label>
+						<label class="btn btn-primary">
+							<input type="radio" name="data[Track][category]" value="9" id="TrackCategory9"> Taller de Software Libre
+						</label>
+					</div>
+					<?php 
+					// $options = array('1' => 'Taller de Televisión', '2' => 'Taller de Gráfica', '5' => 'Taller de Radio', '9' => 'Taller de Software Libre');
+					// $attributes = array('legend' => false);
+					// echo $this->Form->radio('category', $options, $attributes);
+					?>
+				</div>
+			</div>
 			<div class="row">
 				<?php
 				echo $this->Form->input('title', array(

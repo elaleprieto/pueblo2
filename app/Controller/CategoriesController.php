@@ -17,8 +17,22 @@ class CategoriesController extends AppController {
 
 	public function beforeFilter() {
         parent::beforeFilter();
-        $this -> Auth -> allow('display');
+        $this -> Auth -> allow('display', 'get');
     }
+
+/**
+ * get method
+ *
+ * @return void
+ */
+	public function get($id=null) {
+		if($id) {
+			$this->autoRender = false;
+			$this->Category->recursive = 0;
+			$this->Category->id = $id;
+			return $this->Category->field('title');
+		}
+	}
 
 /**
  * index method

@@ -30,18 +30,25 @@ footer {
   padding: 30px 15px 60px 15px;
 }
 
-/* line 27, ../../sass/layouts/default.sass */
+/* line 28, ../../sass/layouts/default.sass */
+h1.iframe {
+  background-color: rgba(194, 163, 163, 0.6);
+  box-shadow: 1px 1px 3px 0px rgba(50, 50, 50, 0.75);
+  font-family: "Rokkitt", serif;
+  font-size: 1.2em;
+}
+/* line 34, ../../sass/layouts/default.sass */
 h1.category {
   margin-top: -6px;
 }
-/* line 30, ../../sass/layouts/default.sass */
+/* line 37, ../../sass/layouts/default.sass */
 h1.category > .label-default {
   background-color: black;
   color: #fd8d46;
   font-weight: normal;
 }
 
-/* line 35, ../../sass/layouts/default.sass */
+/* line 42, ../../sass/layouts/default.sass */
 h3, h5 {
   color: #333333;
   font-family: "Rokkitt", serif;
@@ -49,122 +56,122 @@ h3, h5 {
   font-weight: bold;
   margin: 0;
 }
-/* line 42, ../../sass/layouts/default.sass */
+/* line 49, ../../sass/layouts/default.sass */
 h3 > a, h5 > a {
   color: #333333;
 }
-/* line 45, ../../sass/layouts/default.sass */
+/* line 52, ../../sass/layouts/default.sass */
 h3 > a:hover, h5 > a:hover {
   color: #774d81;
 }
 
-/* line 48, ../../sass/layouts/default.sass */
+/* line 55, ../../sass/layouts/default.sass */
 hr.grisOscuro {
   border-color: #9d9c9d !important;
 }
 
-/* line 51, ../../sass/layouts/default.sass */
+/* line 58, ../../sass/layouts/default.sass */
 ul.list-undecorated {
   padding-left: 10px;
 }
 
-/* line 54, ../../sass/layouts/default.sass */
+/* line 61, ../../sass/layouts/default.sass */
 .auspiciantes {
   margin-bottom: 30px;
 }
 
-/* line 57, ../../sass/layouts/default.sass */
+/* line 64, ../../sass/layouts/default.sass */
 .categories-menu {
   margin-bottom: 10px;
 }
-/* line 60, ../../sass/layouts/default.sass */
+/* line 67, ../../sass/layouts/default.sass */
 .categories-menu > span {
   padding: 15px;
 }
 
-/* line 63, ../../sass/layouts/default.sass */
+/* line 70, ../../sass/layouts/default.sass */
 .checkbox {
   color: #333333;
 }
 
-/* line 67, ../../sass/layouts/default.sass */
+/* line 74, ../../sass/layouts/default.sass */
 .dropdown-menu > li > a:hover {
   background-color: #9d9c9d;
   color: white;
 }
 
-/* line 71, ../../sass/layouts/default.sass */
+/* line 78, ../../sass/layouts/default.sass */
 .img-responsive {
   margin: 0 auto;
 }
 
-/* line 74, ../../sass/layouts/default.sass */
+/* line 81, ../../sass/layouts/default.sass */
 .list-group-item {
   padding: 10px 7px !important;
 }
 
-/* line 77, ../../sass/layouts/default.sass */
+/* line 84, ../../sass/layouts/default.sass */
 .list-undecorated {
   list-style: none;
 }
 
-/* line 80, ../../sass/layouts/default.sass */
+/* line 87, ../../sass/layouts/default.sass */
 .logo-superior {
   margin-bottom: 20px;
 }
-/* line 83, ../../sass/layouts/default.sass */
+/* line 90, ../../sass/layouts/default.sass */
 .logo-superior .img-responsive {
   width: 100px;
 }
 
-/* line 86, ../../sass/layouts/default.sass */
+/* line 93, ../../sass/layouts/default.sass */
 .menu-sm {
   font-size: 0.9em;
 }
-/* line 89, ../../sass/layouts/default.sass */
+/* line 96, ../../sass/layouts/default.sass */
 .menu-sm i {
   margin-right: 0.5em;
   text-align: center;
   width: 1.4em;
 }
 
-/* line 94, ../../sass/layouts/default.sass */
+/* line 101, ../../sass/layouts/default.sass */
 .nav-categorias {
   position: relative;
   z-index: -1;
 }
 
-/* line 98, ../../sass/layouts/default.sass */
+/* line 105, ../../sass/layouts/default.sass */
 .nav-tabs {
   font-weight: bold;
 }
-/* line 101, ../../sass/layouts/default.sass */
+/* line 108, ../../sass/layouts/default.sass */
 .nav-tabs > li > a:hover {
   background-color: #fd8d46;
 }
 
-/* line 104, ../../sass/layouts/default.sass */
+/* line 111, ../../sass/layouts/default.sass */
 .navbar {
   border-radius: 0px !important;
 }
 
-/* line 107, ../../sass/layouts/default.sass */
+/* line 114, ../../sass/layouts/default.sass */
 .navbar-form {
   margin: 4px;
 }
 
-/* line 110, ../../sass/layouts/default.sass */
+/* line 117, ../../sass/layouts/default.sass */
 .navbar-inverse {
   background-color: #080808 !important;
   height: 50px;
 }
-/* line 114, ../../sass/layouts/default.sass */
+/* line 121, ../../sass/layouts/default.sass */
 .navbar-inverse .navbar-brand {
   padding-top: 5px;
   padding-bottom: 5px;
 }
 
-/* line 118, ../../sass/layouts/default.sass */
+/* line 125, ../../sass/layouts/default.sass */
 .navbar-top {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #994717), color-stop(100%, #fd8d46));
   background-image: -webkit-linear-gradient(#994717, #fd8d46);
@@ -182,7 +189,7 @@ ul.list-undecorated {
   border-bottom-left-radius: 70%;
 }
 
-/* line 130, ../../sass/layouts/default.sass */
+/* line 137, ../../sass/layouts/default.sass */
 .navbar-out {
   background-color: #0054a6;
   border-bottom-color: #0054a6;
@@ -199,7 +206,7 @@ ul.list-undecorated {
   z-index: 1000;
 }
 
-/* line 145, ../../sass/layouts/default.sass */
+/* line 152, ../../sass/layouts/default.sass */
 .text-grisOscuro {
   color: #9d9c9d;
 }

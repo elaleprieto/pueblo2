@@ -1,6 +1,8 @@
 <?php
 echo $this->Html->css(array('tracks/add'));
 
+$cd = $this->data['Track']['category'];
+
 if($this->data['Track']['visit'] != '0000-00-00')
 	$visit = $this->Time->format($this->data['Track']['visit'], '%d-%m-%Y');
 else
@@ -25,7 +27,24 @@ else
 				)
 			);
 			?>
-			
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-primary<?= $cd=='1' ? ' active' : '' ?>">
+							<input type="radio" name="data[Track][category]" value="1" id="TrackCategory1" <?= $cd=='1' ? 'checked' : '' ?>> Taller de Televisión
+						</label>
+						<label class="btn btn-primary<?= $cd=='2' ? ' active' : '' ?>">
+							<input type="radio" name="data[Track][category]" value="2" id="TrackCategory2" <?= $cd=='2' ? 'checked' : '' ?>> Taller de Gráfica
+						</label>
+						<label class="btn btn-primary<?= $cd=='5' ? ' active' : '' ?>">
+							<input type="radio" name="data[Track][category]" value="5" id="TrackCategory5" <?= $cd=='5' ? 'checked' : '' ?>> Taller de Radio
+						</label>
+						<label class="btn btn-primary<?= $cd=='9' ? ' active' : '' ?>">
+							<input type="radio" name="data[Track][category]" value="9" id="TrackCategory9" <?= $cd=='9' ? 'checked' : '' ?>> Taller de Software Libre
+						</label>
+					</div>
+				</div>
+			</div>
 			<div class="row">
 				<?php
 				echo $this->Form->input('id');
@@ -79,8 +98,8 @@ else
 							'div' => 'col-sm-12',
 							'label' => false,
 							'placeholder' => 'Video ID',
-							'required' => 'required',
-							'x-ng-init' => 'entryId="' . $this->data['Track']['entryId'] . '"'
+							// 'required' => 'required',
+							'data-ng-init' => 'entryId="' . $this->data['Track']['entryId'] . '"'
 						));
 						?>
 					</div>
@@ -110,7 +129,7 @@ else
 					Haga clic en "Next" dos veces y luego podrá guardar la ficha.
 					Si desea cargar otro video, haga clic <a href="/tracks/create" target="_blank">aquí</a>.
 				</p>
-				<button class="btn col-sm-2 col-sm-offset-5" type="submit" x-ng-disabled="!entryId">
+				<button class="btn col-sm-2 col-sm-offset-5" type="submit">
 					<?php echo __('Guardar'); ?>
 				</button>
 			</div>
