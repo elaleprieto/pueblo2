@@ -212,14 +212,14 @@ class KalturaComponent extends Component {
 		if(!$configId && $type):
 			switch ($type) {
 				case self::VIDEO:
-					$configId = '11170285';
+					$configId = '11170297';
 					break;
 				case self::AUDIO:
-					$configId = '11170292';
+					$configId = '11170298';
 					break;
 				
 				default:
-					$configId = '11170285';
+					$configId = '11170297';
 					break;
 			}
 		endif;
