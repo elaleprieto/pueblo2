@@ -55,7 +55,7 @@
 					<dt>Localidad</dt>
 					<dd><?php echo $track['Track']['localidad'] ?></dd>
 					<dt>Fecha de la visita</dt>
-					<dd><?php echo $track['Track']['visit'] != '0000-00-00' ? $track['Track']['visit'] : '-' ?></dd>
+					<dd><?php echo $track['Track']['visit'] != '0000-00-00' ? $this->Time->format($track['Track']['visit'], '%d-%m-%Y') : '-' ?></dd>
 				</dl>
 			</div>
 		</div>
