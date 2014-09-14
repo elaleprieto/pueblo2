@@ -6,6 +6,10 @@ App::uses('Component', 'Controller');
 App::import('Vendor', 'kaltura/KalturaClient');
 
 class KalturaComponent extends Component {
+	const AUDIO = 5;
+	const IMAGE = 2;
+	const VIDEO = 1;
+
 	public $userId = 'admin';
 
 	# LibreKaltura.com.ar
@@ -135,6 +139,15 @@ class KalturaComponent extends Component {
 		endif;
 	}
 
+	public function getType($entry_id = null) {
+		if($entry_id):
+			$kClient = $this->getKalturaClient();
+			$entry = $kClient->media->get($entry_id);
+			
+			return $entry->mediaType;
+		endif;
+	}
+
 	public function getUploadFlashVars() {
 		// define("KALTURA_PARTNER_ID", "106");
 		$partnerId = $this->partnerId;
@@ -185,7 +198,7 @@ class KalturaComponent extends Component {
 	// public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170242') {
 	// public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170250') { // reproductor con nombre "escondido"
 	// public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170280') {
-	public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = '11170285') {
+	public function getUrlEmbed($entry_id = '0_e0spw8jl', $partnerId = null, $configId = null, $type = null) {
 		# reproductor con nombre "Trama escondido" = 11170280
 		
 		if(!$partnerId)
@@ -196,6 +209,21 @@ class KalturaComponent extends Component {
 		// $kClient = self::getKalturaClient($PartnerInfo->partnerid, $PartnerInfo->administratorsecret, true, $PartnerInfo->url);
 		$kClient = $this->getKalturaClient();
 		
+		if(!$configId && $type):
+			switch ($type) {
+				case self::VIDEO:
+					$configId = '11170285';
+					break;
+				case self::AUDIO:
+					$configId = '11170292';
+					break;
+				
+				default:
+					$configId = '11170285';
+					break;
+			}
+		endif;
+
 		try
 		{
 			$uiConf = $kClient->uiConf->get($configId);
@@ -221,8 +249,8 @@ class KalturaComponent extends Component {
 			  type="application/x-shockwave-flash" 
 			  height="'.$uiConf->height.'" 
 			  width="100%" 
-			  allowFullScreen="true" 
-			  allowNetworking="all" 
+			  allowFullScreen="false" 
+			  allowNetworking="false" 
 			  allowScriptAccess="always" 
 			  data="'.$PartnerInfo->url.'/kwidget/wid/_'.$PartnerInfo->partnerid.'/uiconf_id/'.$uiConf->id.'/entry_id/'.$entry_id.'" 
 			  xmlns:dc="http://purl.org/dc/terms/" 

@@ -1,24 +1,6 @@
-<?php
-echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput', 'vendor/bootstrap-datepicker'));
-echo $this->Html->script(array(
-	'//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js'
-	, 'angular/controllers'
-	, 'vendor/jquery.tagsinput'
-	, 'vendor/bootstrap-datepicker'
-	, 'vendor/angular-strap.min'
-	// , 'tracks/create'
-), array('inline' => false));
-?>
+<?php echo $this->Html->css(array('tracks/add')); ?>
 
 <div id="inicio" data-ng-app="App" data-ng-controller="TracksController">
-	<!-- <div class="row">
-		<div class="col-sm-12">
-			<span class="alert alert-{{mensaje.tag}} pull-left" ng-show='mensaje.text' ng-bind="mensaje.text" ng-class=""></span>
-			<a href="/listado" class="btn btn-primary pull-right">
-				Ver listado
-			</a>
-		</div>
-	</div> -->
 	<div class="row">
 		<div class="col-sm-12">
 			<span class="alert alert-{{mensaje.tag}} pull-left" ng-show='mensaje.text' ng-bind="mensaje.text" ng-class=""></span>
@@ -29,18 +11,14 @@ echo $this->Html->script(array(
 	<hr />
 	<div class="row datos">
 		<div class="col-sm-12">
-			<?php echo $this->Form->create('Track', array(
-				'id' => 'formulario',
-				'name' => 'formulario',
-				'data-ng-submit' => 'submit($event)'
-			));
- ?>
-	<!-- 
-			<div class="col-sm-4">
-				<div class="row">
-					<input name="data[Track][catalogoId]" maxlength="255" type="text" id="TrackCatalogoId" placeholder="Catalogo ID">
-				</div>
-			</div> -->
+			<?php
+			echo $this->Form->create('Track', array('id' => 'formulario'
+				, 'name' => 'formulario'
+				, 'data-ng-submit' => 'submit($event)'
+				, 'type' => 'file'
+				)
+			);
+			?>
 			
 			<div class="row">
 				<?php
@@ -72,19 +50,6 @@ echo $this->Html->script(array(
 				?>
 			</div>
 			<div class="row">
-				<!-- <div class="col-sm-4">
-					<input id="tags1" class="tags" name="data[Track][tags]" value="etiqueta" type="text" />
-				</div> -->
-				<?php 
-				// echo $this->Form->input('visit', array(
-				// 	'autocomplete' => false,
-				// 	'class' => 'col-sm-12 form-control',
-				// 	'div' => 'col-sm-4',
-				// 	'label' => false,
-				// 	// 'placeholder' => 'Localidad',
-				// 	// 'type' => 'text'
-				// ));
-				?>
 				<div class="input-group col-sm-4">
 					<input class="form-control col-sm-8" type="text" name="data[Track][visit]" 
 						value="{{visit}}" 
@@ -103,18 +68,24 @@ echo $this->Html->script(array(
 							'div' => 'col-sm-12',
 							'label' => false,
 							'placeholder' => 'Video ID',
-							'required' => 'required',
+							// 'required' => 'required',
 							'data-ng-model' => 'entryId'
 						));
 						?>
 					</div>
 				</div>
 				<div class="col-sm-4">
-					<div class="row">
-						<?php
-						echo $this->Form->input('destacado', array('div' => 'col-sm-12', 'hiddenField' => false));
-						?>
-					</div>
+					<?php
+					echo $this->Form->input('destacado', array('div' => false, 'hiddenField' => false));
+					?>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					Imagen de portada: 
+				</div>
+				<div class="col-sm-10">
+					<?php echo $this->Form->file('image', array('data-file'=>"param.file", 'div' => 'false', 'label'=>false)); ?>
 				</div>
 			</div>
 			<div class="row text-center">
@@ -126,7 +97,7 @@ echo $this->Html->script(array(
 					Haga clic en "Next" dos veces y luego podrá guardar la ficha.
 					Si desea cargar otro video, haga clic <a href="/tracks/create" target="_blank">aquí</a>.
 				</p>
-				<button class="btn col-sm-2 col-sm-offset-5" type="submit" data-ng-disabled="!entryId">
+				<button class="btn col-sm-2 col-sm-offset-5" type="submit" data-ng-disabled="!entryId && !file">
 					<?php echo __('Guardar'); ?>
 				</button>
 			</div>
@@ -153,7 +124,7 @@ echo $this->Html->script(array(
 	// swfobject.embedSWF("http://www.kaltura.com/kcw/ui_conf_id/1000740", "kcw", "680", "360", "9.0.0", "expressInstall.swf", flashVars, params);
 	// swfobject.embedSWF("http://www.librekaltura.com.ar/kcw/ui_conf_id/11170222", "kcw", "680", "360", "9.0.0", "expressInstall.swf", flashVars, params);
 	// swfobject.embedSWF("http://www.librekaltura.com.ar/kcw/ui_conf_id/11170253", "kcw", "680", "360", "9.0.0", "expressInstall.swf", flashVars, params);
-	swfobject.embedSWF("http://www.librekaltura.com.ar/kcw/ui_conf_id/11170265", "kcw", "680", "360", "9.0.0", "expressInstall.swf", flashVars, params);
+	swfobject.embedSWF("http://www.librekaltura.com.ar/kcw/ui_conf_id/11170290", "kcw", "680", "360", "9.0.0", "expressInstall.swf", flashVars, params);
 	// swfobject.embedSWF("http://www.librekaltura.com.ar/kcw/ui_conf_id/2011401", "kcw", "680", "360", "9.0.0", "expressInstall.swf", flashVars, params);
 </script>
  
@@ -172,37 +143,5 @@ echo $this->Html->script(array(
 <script type="text/javascript">
 	function onContributionWizardClose() {
 		$('#kcw').hide();
-		// alert("Thank you for using Kaltura ontribution Wizard");
 	}
 </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

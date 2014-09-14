@@ -16,6 +16,23 @@
     }
   });
 
+  App.directive('file', function() {
+    return {
+      scope: {
+        file: '='
+      },
+      link: function(scope, el, attrs) {
+        return el.bind('change', function(event) {
+          var file, files;
+          files = event.target.files;
+          file = files[0];
+          scope.$parent.file = file ? file.name : null;
+          return scope.$apply();
+        });
+      }
+    };
+  });
+
   /* *******************************************************************************************************************
         Tracks
   *******************************************************************************************************************
@@ -66,20 +83,7 @@
       $scope.mensaje.text = 'Enviando el formulario...';
       $scope.mensaje.tag = 'info';
       if ($scope.formulario.$valid) {
-        return $.post('/cargador', $('#formulario').serialize()).error(function() {
-          $scope.mensaje.text = 'Ocurrió un error enviando el formulario. Por favor, verifique los datos e intente nuevamente.';
-          $scope.mensaje.tag = 'danger';
-          return $scope.$apply();
-        }).success(function(data) {
-          $scope.mensaje.text = 'Formulario enviado correctamente.';
-          $scope.mensaje.tag = 'success';
-          $('#formulario')[0].reset();
-          $scope.$apply();
-          $timeout(function() {
-            return $scope.mensaje.text = '';
-          }, 5000);
-          return window.location = '/tracks/index';
-        });
+        return $('#formulario').submit();
       } else {
         $scope.mensaje.text = 'Verifique el Formulario.';
         return $scope.mensaje.tag = 'danger';

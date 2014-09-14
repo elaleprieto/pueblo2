@@ -1,8 +1,5 @@
 <?php
-// debug($this->data, $showHtml = null, $showFrom = true);
-
-echo $this->Html->css(array('tracks/add', 'vendor/jquery.tagsinput'));
-// echo $this->Html->script(array('tracks/create'), array('inline' => false));
+echo $this->Html->css(array('tracks/add'));
 
 if($this->data['Track']['visit'] != '0000-00-00')
 	$visit = $this->Time->format($this->data['Track']['visit'], '%d-%m-%Y');
@@ -21,18 +18,13 @@ else
 	<hr />
 	<div class="row datos">
 		<div class="col-sm-12">
-			<?php echo $this->Form->create('Track', array(
-				'id' => 'formulario',
-				'name' => 'formulario',
-				'ng-submit' => 'submit($event)'
-			));
- ?>
-	<!-- 
-			<div class="col-sm-4">
-				<div class="row">
-					<input name="data[Track][catalogoId]" maxlength="255" type="text" id="TrackCatalogoId" placeholder="Catalogo ID">
-				</div>
-			</div> -->
+			<?php echo $this->Form->create('Track', array('id' => 'formulario'
+				, 'name' => 'formulario'
+				, 'data-ng-submit' => 'submit($event)'
+				, 'type' => 'file'
+				)
+			);
+			?>
 			
 			<div class="row">
 				<?php
@@ -65,20 +57,6 @@ else
 				?>
 			</div>
 			<div class="row">
-				<!-- <div class="col-sm-4">
-					<input id="tags1" class="tags" name="data[Track][tags]" value="etiqueta" type="text" />
-				</div> -->
-				<?php 
-				// echo $this->Form->input('visit', array(
-				// 	'autocomplete' => false,
-				// 	'class' => 'col-sm-12 form-control',
-				// 	'div' => 'col-sm-4',
-				// 	'label' => false,
-				// 	// 'placeholder' => 'Localidad',
-				// 	// 'type' => 'text'
-				// ));
-				?>
-
 				<!-- Datepicker -->
 				<div class="input-group col-sm-4">
 					<input class="form-control col-sm-8" type="text" name="data[Track][visit]" 
@@ -113,6 +91,14 @@ else
 						echo $this->Form->input('destacado', array('div' => 'col-sm-12', 'hiddenField' => false));
 						?>
 					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+					Imagen de portada: 
+				</div>
+				<div class="col-sm-10">
+					<?php echo $this->Form->file('image', array('data-file'=>"param.file", 'div' => 'false', 'label'=>false)); ?>
 				</div>
 			</div>
 			<div class="row text-center">

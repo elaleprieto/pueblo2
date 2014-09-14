@@ -17,31 +17,31 @@ body {
   background-position: top left;
   color: black;
 }
-/* line 20, ../../sass/layouts/default.sass */
+/* line 18, ../../sass/layouts/default.sass */
 body > .container {
   background-color: rgba(255, 255, 255, 0.6);
   min-height: 480px;
   padding: 20px;
 }
 
-/* line 25, ../../sass/layouts/default.sass */
+/* line 23, ../../sass/layouts/default.sass */
 footer {
   margin-top: 50px;
   padding: 30px 15px 60px 15px;
 }
 
-/* line 29, ../../sass/layouts/default.sass */
+/* line 27, ../../sass/layouts/default.sass */
 h1.category {
   margin-top: -6px;
 }
-/* line 32, ../../sass/layouts/default.sass */
+/* line 30, ../../sass/layouts/default.sass */
 h1.category > .label-default {
   background-color: black;
   color: #fd8d46;
   font-weight: normal;
 }
 
-/* line 37, ../../sass/layouts/default.sass */
+/* line 35, ../../sass/layouts/default.sass */
 h3, h5 {
   color: #333333;
   font-family: "Rokkitt", serif;
@@ -49,48 +49,53 @@ h3, h5 {
   font-weight: bold;
   margin: 0;
 }
-/* line 44, ../../sass/layouts/default.sass */
+/* line 42, ../../sass/layouts/default.sass */
 h3 > a, h5 > a {
   color: #333333;
 }
-/* line 47, ../../sass/layouts/default.sass */
+/* line 45, ../../sass/layouts/default.sass */
 h3 > a:hover, h5 > a:hover {
   color: #774d81;
 }
 
-/* line 50, ../../sass/layouts/default.sass */
+/* line 48, ../../sass/layouts/default.sass */
 hr.grisOscuro {
   border-color: #9d9c9d !important;
 }
 
-/* line 53, ../../sass/layouts/default.sass */
+/* line 51, ../../sass/layouts/default.sass */
 ul.list-undecorated {
   padding-left: 10px;
 }
 
-/* line 57, ../../sass/layouts/default.sass */
+/* line 54, ../../sass/layouts/default.sass */
 .auspiciantes {
   margin-bottom: 30px;
 }
 
-/* line 60, ../../sass/layouts/default.sass */
+/* line 57, ../../sass/layouts/default.sass */
 .categories-menu {
   margin-bottom: 10px;
 }
-/* line 63, ../../sass/layouts/default.sass */
+/* line 60, ../../sass/layouts/default.sass */
 .categories-menu > span {
   padding: 15px;
 }
 
-/* line 66, ../../sass/layouts/default.sass */
+/* line 63, ../../sass/layouts/default.sass */
 .checkbox {
   color: #333333;
 }
 
-/* line 70, ../../sass/layouts/default.sass */
+/* line 67, ../../sass/layouts/default.sass */
 .dropdown-menu > li > a:hover {
   background-color: #9d9c9d;
   color: white;
+}
+
+/* line 71, ../../sass/layouts/default.sass */
+.list-group-item {
+  padding: 10px 7px !important;
 }
 
 /* line 74, ../../sass/layouts/default.sass */

@@ -46,14 +46,15 @@ class TracksController extends AppController {
 		
 		if($entryId = $track['Track']['entryId']):
 			$kClient = $this->Kaltura->getKalturaClient();
-			$kUrlEmbed = $this->Kaltura->getUrlEmbed($entryId);
+			$type = $this->Kaltura->getType($entryId);
+			$kUrlEmbed = $this->Kaltura->getUrlEmbed($entryId, null, null, $type);
 			$thumbs = $this->Kaltura->getThumbs($entryId);
 		else:
 			$kClient = null;
 			$kUrlEmbed = null;
 		endif;
 		
-		$this->set(compact('track', 'kClient', 'kUrlEmbed', 'thumbs'));
+		$this->set(compact('track', 'kClient', 'kUrlEmbed', 'thumbs', 'type'));
 		$this->render('ver');
 	}
 
@@ -119,80 +120,37 @@ class TracksController extends AppController {
  * @return void
  */
 	public function create() {
-		if ($this->request->is('post')) {
+		if ($this->request->is('post')):
 			$this->autoRender = false;
 			$track = $this->request->data;
 			$track['Track']['user_id'] = $this->Auth->user('id');
 			$fecha = DateTime::createFromFormat('j-m-Y', $track['Track']['visit']);
 			$track['Track']['visit'] = $fecha->format('Y-m-d');
 			$this->Track->create();
-			if ($this->Track->save($track)) {
+			if ($this->Track->save($track, true, array('title', 'description', 'localidad', 'visit', 'entryId', 'user_id'))):
 				$trackId = $this->Track->id;
-				// $this->Track->Tag->setTags($trackId, explode(',', $track['Track']['tags']));
-				$this->Session->setFlash(__('The track has been saved'));
-				return true;
-			} else {
-				throw new Exception("Error Processing Request", 1);
-			}
-		}
-		if ($this->request->is('put')) {
-			$this->autoRender = false;
-			$track = $this->request->data;
-			
-			# Ajuste porque no se modificaba
-			if (!isset($track['Track']['destacado']))
-				$track['Track']['destacado'] = false;
-			
-			if ($this->Track->save($track)) {
-				$this->Track->Tag->setTags($track['Track']['id'], explode(',', $track['Track']['tags']));
-				$this->Session->setFlash(__('The track has been saved'));
-				return true;
-			} else {
-				throw new Exception("Error Processing Request", 1);
-			}
-		}
-		
-		$this->set('flashVars', $this->Kaltura->getUploadFlashVars());
-		
-		$this->loadModel('Quapitulo', 1);
-		$this->set('quapitulos', $this->Quapitulo->read());
 
+				# Si se subió una imagen, se la acondiciona para guardarla con el nombre del id del track creado.
+				if(isset($this->data['Track']['image']['name'])):
+					$filename = explode(".", $this->data['Track']['image']['name']);
+					$filenameext = $filename[count($filename)-1];
+					$image = IMAGES.'tracks/images/'.$trackId.'.'.$filenameext;
+					$this->Track->saveField('image', $trackId.'.'.$filenameext);
+					if (!move_uploaded_file($this->data['Track']['image']['tmp_name'], $image)):
+						$this->Session->setFlash("Ocurrió un problema subiendo el archivo.", 'fallo');
+						throw new Exception("Error Processing Request", 1);
+					endif;
+				endif;
+				$this->redirect(array('action'=>'index'));
+			else:
+				throw new Exception("Error Processing Request", 1);
+			endif;
+		endif;
+		
 		$categories = $this->Track->Category->find('list');
 		$tags = $this->Track->Tag->find('list');
-// 		
-		// $kClient = $this->Kaltura->getKalturaClient();
-// 		
-		// ###########
-		// # Videos
-		// ###########
-		// # Filtro
-		// $filter = new KalturaMediaEntryFilter();
-		// $filter->mediaTypeEqual = 1; //only sync videos
-		// # Paginacion
-		// $pager = new KalturaFilterPager();
-		// $pager->pageSize = 1000;
-		// $pager->pageIndex = 1;
-		// # Listar
-		// $kalturaList = $kClient->media->listAction($filter, $pager); # videos en el servidor de Kaltura
-// 		
-		// ###########
-		// # Imagenes
-		// ###########
-		// # Filtro
-		// $filter = new KalturaMediaEntryFilter();
-		// $filter->mediaTypeEqual = 2; //only sync imagenes
-		// # Paginacion
-		// $pager = new KalturaFilterPager();
-		// $pager->pageSize = 1000;
-		// $pager->pageIndex = 1;
-		// # Listar
-		// $kalturaImagenList = $kClient->media->listAction($filter, $pager); # videos en el servidor de Kaltura
-// 
-// 		
-		// $this->Track->recursive = -1;
-		// $addedList = $this->Track->find('all', array('fields'=>'entryId')); # videos ya linkeados
-// 		
-		// $this->set(compact('addedList', 'categories', 'kalturaList', 'kalturaImagenList', 'tags'));
+
+		$this->set('flashVars', $this->Kaltura->getUploadFlashVars());
 		$this->set(compact('categories', 'tags'));
 	}
 
@@ -204,68 +162,39 @@ class TracksController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
-		if (!$this->Track->exists($id)) {
+		if (!$this->Track->exists($id))
 			throw new NotFoundException(__('Invalid track'));
-		}
-		if ($this->request->is('post') || $this->request->is('put')) {
+		if ($this->request->is('post') || $this->request->is('put')):
 			$track = $this->request->data;
 			$track['Track']['titulo'] = $track['Track']['title'];
-			if ($this->Track->save($track)) {
-				$this->Session->setFlash(__('The track has been saved'));
+			if ($this->Track->save($track)):
+				# Si se subió una imagen, se la acondiciona para guardarla con el nombre del id del track creado.
+				if(isset($this->data['Track']['image']['name'])):
+					$filename = explode(".", $this->data['Track']['image']['name']);
+					$filenameext = $filename[count($filename)-1];
+					$image = IMAGES.'tracks/images/'.$id.'.'.$filenameext;
+					$this->Track->saveField('image', $id.'.'.$filenameext);
+					if (!move_uploaded_file($this->data['Track']['image']['tmp_name'], $image)):
+						$this->Session->setFlash("Ocurrió un problema subiendo el archivo.", 'fallo');
+						throw new Exception("Error Processing Request", 1);
+					endif;
+				endif;
 				return $this->redirect(Router::url('/listado'));
-			} else {
+			else:
 				$this->Session->setFlash(__('The track could not be saved. Please, try again.'));
-			}
-		} else {
+			endif;
+		else:
 			$options = array('conditions' => array('Track.' . $this->Track->primaryKey => $id));
 			$this->request->data = $this->Track->find('first', $options);
-		}
-
-		$this->set('flashVars', $this->Kaltura->getUploadFlashVars());
-
-		$this->loadModel('Quapitulo', 1);
-		$this->set('quapitulos', $this->Quapitulo->read());
+		endif;
 
 		$categories = $this->Track->Category->find('list');
 		$tags = $this->Track->Tag->find('list');
 
+		$this->set('flashVars', $this->Kaltura->getUploadFlashVars());
 		$this->set(compact('categories', 'tags'));
-		
 		$this->render('editar');
 		
-		// $kClient = $this->Kaltura->getKalturaClient();
-			
-		// ###########
-		// # Videos
-		// ###########
-		// # Filtro
-		// $filter = new KalturaMediaEntryFilter();
-		// $filter->mediaTypeEqual = 1; //only sync videos
-		// # Paginacion
-		// $pager = new KalturaFilterPager();
-		// $pager->pageSize = 1000;
-		// $pager->pageIndex = 1;
-		// # Listar
-		// $kalturaList = $kClient->media->listAction($filter, $pager); # videos en el servidor de Kaltura
-		
-		// ###########
-		// # Imagenes
-		// ###########
-		// # Filtro
-		// $filter = new KalturaMediaEntryFilter();
-		// $filter->mediaTypeEqual = 2; //only sync imagenes
-		// # Paginacion
-		// $pager = new KalturaFilterPager();
-		// $pager->pageSize = 1000;
-		// $pager->pageIndex = 1;
-		// # Listar
-		// $kalturaImagenList = $kClient->media->listAction($filter, $pager); # videos en el servidor de Kaltura
-		
-		
-		// $this->Track->recursive = -1;
-		// $addedList = $this->Track->find('all', array('fields'=>'entryId')); # videos ya linkeados
-		
-		// $this->set(compact('addedList', 'categories', 'kalturaList', 'kalturaImagenList', 'tags'));
 	}
 
 /**
@@ -376,31 +305,7 @@ class TracksController extends AppController {
 		// debug($this->request->query['v']);
 		$query = isset($this->request->query['q']) ? $this->request->query['q'] : false;
 		$visit = isset($this->request->query['v']) ? $this->request->query['v'] : false;
-		// debug($this->request->query['q']);
-		// if($query || $query = isset($this->request->data['query']) ? $this->request->data['query'] : false) {
 		if($query || $visit) {
-			// $options['joins'] = array(array('table' => 'tags_tracks'
-			// 		, 'alias' => 'TagsTrack'
-			// 		, 'type' => 'left'
-			// 		, 'conditions' => array('Track.id = TagsTrack.track_id')
-			// 	)
-			// 	, array('table' => 'tags'
-			// 		, 'alias' => 'Tag'
-			// 		, 'type' => 'left'
-			// 		, 'conditions' => array('TagsTrack.tag_id = Tag.id')
-			// 	)
-			// 	, array('table' => 'categories_tracks'
-			// 		, 'alias' => 'CategoriesTrack'
-			// 		, 'type' => 'left'
-			// 		, 'conditions' => array('Track.id = CategoriesTrack.track_id')
-			// 	)
-			// 	, array('table' => 'categories'
-			// 		, 'alias' => 'Category'
-			// 		, 'type' => 'left'
-			// 		, 'conditions' => array('CategoriesTrack.category_id = Category.id')
-			// 	)
-			// );
-			
 			$this->request->data['query'] = $query ? $query : $visit;
 			$query = strtolower($query);
 			$query = explode(' ', $query); 

@@ -5,6 +5,19 @@ App = angular.module('App', ['$strap.directives'])
 ******************************************************************************************************************* ###
 App.value '$strapConfig', datepicker: language: 'es'
 
+
+
+App.directive 'file', ->
+	scope:
+		file: '='
+	link: (scope, el, attrs) ->
+		el.bind 'change', (event) ->
+			files = event.target.files
+			file = files[0]
+			# scope.file = if file then file.name else null
+			scope.$parent.file = if file then file.name else null
+			scope.$apply()
+
 ### *******************************************************************************************************************
       Tracks
 ******************************************************************************************************************* ###
@@ -43,21 +56,22 @@ App.controller 'TracksController', ($scope, $http, $timeout) ->
 		$scope.mensaje.text = 'Enviando el formulario...'
 		$scope.mensaje.tag = 'info'
 		if $scope.formulario.$valid
-			$.post('/cargador', $('#formulario').serialize())
-				.error () ->
-					$scope.mensaje.text = 'Ocurrió un error enviando el formulario. Por favor, verifique los datos e intente nuevamente.'
-					$scope.mensaje.tag = 'danger'
-					$scope.$apply()
-				.success (data) ->
-					$scope.mensaje.text = 'Formulario enviado correctamente.'
-					$scope.mensaje.tag = 'success'
-					$('#formulario')[0].reset()
-					# $('#tags1').importTags('ejemplo');
-					$scope.$apply()
-					$timeout () -> 
-						$scope.mensaje.text = ''
-					, 5000
-					window.location = '/tracks/index'
+			$('#formulario').submit()
+			# $.post('/cargador', $('#formulario').serialize())
+			# 	.error () ->
+			# 		$scope.mensaje.text = 'Ocurrió un error enviando el formulario. Por favor, verifique los datos e intente nuevamente.'
+			# 		$scope.mensaje.tag = 'danger'
+			# 		$scope.$apply()
+			# 	.success (data) ->
+			# 		$scope.mensaje.text = 'Formulario enviado correctamente.'
+			# 		$scope.mensaje.tag = 'success'
+			# 		# $('#formulario')[0].reset()
+			# 		# # $('#tags1').importTags('ejemplo');
+			# 		# $scope.$apply()
+			# 		# $timeout () -> 
+			# 		# 	$scope.mensaje.text = ''
+			# 		# , 5000
+			# 		# window.location = '/tracks/index'
 		else
 			$scope.mensaje.text = 'Verifique el Formulario.'
 			$scope.mensaje.tag = 'danger'
