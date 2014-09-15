@@ -129,7 +129,7 @@ class TracksController extends AppController {
 			$fecha = DateTime::createFromFormat('j-m-Y', $track['Track']['visit']);
 			$track['Track']['visit'] = $fecha->format('Y-m-d');
 			$this->Track->create();
-			if ($this->Track->save($track, true, array('title', 'description', 'localidad', 'visit', 'category', 'entryId', 'user_id'))):
+			if ($this->Track->save($track, true, array('title', 'description', 'destacado', 'localidad', 'visit', 'category', 'entryId', 'user_id'))):
 				$trackId = $this->Track->id;
 
 				# Si se subió una imagen, se la acondiciona para guardarla con el nombre del id del track creado.
@@ -171,7 +171,7 @@ class TracksController extends AppController {
 			$track['Track']['titulo'] = $track['Track']['title'];
 			// if ($this->Track->save($track)):
 			debug($track, $showHtml = null, $showFrom = true);
-			if ($this->Track->save($track, true, array('title', 'description', 'localidad', 'visit', 'category', 'entryId', 'user_id'))):
+			if ($this->Track->save($track, true, array('title', 'description', 'destacado', 'localidad', 'visit', 'category', 'entryId', 'user_id'))):
 				# Si se subió una imagen, se la acondiciona para guardarla con el nombre del id del track creado.
 				if(isset($this->data['Track']['image']['name']) && $this->data['Track']['image']['name'] != ''):
 					$filename = explode(".", $this->data['Track']['image']['name']);
