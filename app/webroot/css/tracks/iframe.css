@@ -20,5 +20,6 @@ h3 {
 }
 /* line 18, ../../sass/tracks/iframe.sass */
 .col-video img {
-  height: 120px;
+  max-height: 120px;
+  width: auto;
 }
