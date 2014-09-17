@@ -59,7 +59,6 @@ class AppController extends Controller {
     if ($user['Rol']['weight'] >= '40') {
         $this -> layout = 'admin';
     }
-
   }
 
   public function isAuthorized($user) {
