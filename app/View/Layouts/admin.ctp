@@ -72,9 +72,9 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 					<!-- Login -->
 					<div class="row">
 						<div class="col-sm-12">
-							<?php if (AuthComponent::user('name') != ''): ?>
+							<?php if (AuthComponent::user('username') != ''): ?>
 								<p class="text-center text-grisOscuro">
-									<?php echo __('Bienvenido, ') . AuthComponent::user('name'); ?>
+									<?php echo __('Bienvenido, ') . ucfirst(strtolower(AuthComponent::user('username'))); ?>
 								</p>
 								
 								<ul class="list-group menu-sm">
