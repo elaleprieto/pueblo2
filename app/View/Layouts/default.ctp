@@ -71,9 +71,9 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 					<!-- Login -->
 					<div class="row">
 						<div class="col-sm-12">
-							<?php if (AuthComponent::user('name') != ''): ?>
+							<?php if (AuthComponent::user('username') != ''): ?>
 								<p class="text-center text-">
-									<?php echo __('Bienvenido, ') . AuthComponent::user('name'); ?>
+									<?php echo __('Bienvenido, ') . ucfirst(strtolower(AuthComponent::user('username'))); ?>
 								</p>
 								
 								<ul class="list-group menu-sm">
@@ -89,12 +89,12 @@ $siteLink = __d('site_link', 'http://pueblo.coop');
 									</li>
 									<li class="list-group-item">
 										<a href="/tracks/create"> 
-											<i class="fa fa-cloud-upload"></i> <?php echo __('Nuevo Video'); ?>
+											<i class="fa fa-cloud-upload"></i> Nueva Producción
 										</a>
 									</li>
 									<li class="list-group-item">
 										<a href="/tracks">
-											<i class="fa fa-list"></i> <?php echo __('Listar Videos'); ?>
+											<i class="fa fa-list"></i> Listar Producciones
 										</a>
 									</li>
 									<li class="list-group-item">
