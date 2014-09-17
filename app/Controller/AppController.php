@@ -49,10 +49,17 @@ class AppController extends Controller {
 
   public function beforeFilter() {
   	$user = AuthComponent::user(); 
-	# Usuario administrador(40) y superiores
+    
+    # Usuario usuarios(10) y superiores
+    if ($user['Rol']['weight'] >= '10') {
+        $this -> layout = 'users';
+    }
+    
+    # Usuario administradores(40) y superiores
     if ($user['Rol']['weight'] >= '40') {
         $this -> layout = 'admin';
     }
+
   }
 
   public function isAuthorized($user) {
