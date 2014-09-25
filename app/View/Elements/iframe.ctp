@@ -1,13 +1,9 @@
 <?php
-echo $this->Html->css(array('vendor/bootstrap.min', 'tracks/iframe', 'http://fonts.googleapis.com/css?family=Rokkitt:400,700'), null, array('inline' => true));
-
 if(!isset($cantidad)) $cantidad = 9;
 if(!isset($category)) $category = null;
 
 $tracks = $this->requestAction(Router::url(array('controller' => 'tracks', 'action' => 'iframe', $cantidad, $category)));
 $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categories', 'action' => 'get', $category)));
-// debug($categoryTitle, $showHtml = null, $showFrom = true);
-// debug($tracks);
 ?>
 
 <?php if(sizeof($tracks)): ?>
@@ -19,7 +15,7 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 		</div>
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<?php for ($i = 0; $i < sizeof($tracks); $i++): ?> 
+				<?php for ($i = 0; $i < sizeof($tracks); $i++): ?>
 					<?php if ($i % 3 == 0): ?>
 						<div class="row">
 					<?php endif; ?>
@@ -31,7 +27,7 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 										case '1':
 											$url = 'http://librekaltura.com.ar/p/1/sp/100/thumbnail/entry_id/' . $tracks[$i]['Track']['entryId'] . '/width/135/height/81'.$date;
 											break;
-										
+
 										default:
 											if($tracks[$i]['Track']['image'])
 												$url = 'tracks/images/' . $tracks[$i]['Track']['image'];
@@ -61,7 +57,7 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 	<?php else: ?>
 		<div class="row">
 			<div class="col-sm-12 text-center">
-				<?php for ($i = 0; $i < sizeof($tracks); $i++): ?> 
+				<?php for ($i = 0; $i < sizeof($tracks); $i++): ?>
 					<?php if ($i % 3 == 0): ?>
 						<div class="row">
 					<?php endif; ?>
@@ -73,7 +69,7 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 										case '1':
 											$url = 'http://librekaltura.com.ar/p/1/sp/100/thumbnail/entry_id/' . $tracks[$i]['Track']['entryId'] . '/width/135/height/81'.$date;
 											break;
-										
+
 										default:
 											if($tracks[$i]['Track']['image'])
 												$url = 'tracks/images/' . $tracks[$i]['Track']['image'];

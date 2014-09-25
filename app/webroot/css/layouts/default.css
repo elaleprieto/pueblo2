@@ -15,7 +15,6 @@ body {
   background-image: url('/img/backgrounds/backPC.jpg?1410136253');
   background-repeat: no-repeat;
   background-position: top left;
-  color: black;
 }
 /* line 18, ../../sass/layouts/default.sass */
 body > .container {
@@ -53,8 +52,6 @@ h3, h5 {
   color: #333333;
   font-family: "Rokkitt", serif;
   font-size: 1.7em;
-  font-weight: bold;
-  margin: 0;
 }
 /* line 49, ../../sass/layouts/default.sass */
 h3 > a, h5 > a {

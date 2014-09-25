@@ -1,16 +1,13 @@
-@import colors, compass/css3
+@import colors, compass/css3, mediaIframe
 
 
 h5
 	margin-bottom: 15px
 
-// .carousel-control.left, .carousel-control.right
-	// background-image: none
-	
 .carousel-indicators
 	bottom: auto
 	top: 20px
-	
+
 .carousel-inner > .item > img, .carousel-inner > .item > a > img
 	margin-left: auto
 	margin-right: auto
@@ -32,7 +29,7 @@ h5
 
 .slogan
 	margin-top: 5px
-	
+
 .video
 	background:
 		image: image-url('backgrounds/abstractBackgroundReverse.jpg')
@@ -40,22 +37,22 @@ h5
 		position: top left
 	// +background-size(cover)
 	+background-size(100% 120%)
-	
+
 .videoRow
 	+background-image(linear-gradient(transparent 30%, darken($azulClaro, 20%) 85%, darken($azulClaro, 20%) 100%))
 	+single-box-shadow(#000000)
 	border: 1px solid #000
 	height: 165px
 	// background-color: darken($azulOscuro, 10%)
-	
+
 .videoText
 	padding: 10px 0
 	font-family: 'Dosis', sans-serif
 	// background-color: darken($azulOscuro, 15%)
-	
+
 .videoThumb
 	padding: 10px 0
-	
+
 	& img
 		min-height: 85px
 		max-height: 85px
