@@ -36,8 +36,10 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 											break;
 									}
 
-									echo $this->Html->link($this->Html->image($url, array('class' => 'col-sm-12 img-responsive'))
-										, array('controller'=>'tracks', 'action'=>'view', $tracks[$i]['Track']['id'])
+									echo $this->Html->link($this->Html->image($url
+											, array('class' => 'col-sm-12 img-responsive'))
+										, array('controller'=>'tracks'
+											, 'action'=>'view', $tracks[$i]['Track']['id'])
 										, array('escape'=>false));
 									?>
 								</div>
@@ -46,7 +48,9 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 										<?php echo $tracks[$i]['Track']['title'] ?>
 									</a>
 								</h3>
-								<p><?php echo ucfirst($tracks[$i]['Track']['description']) ?></p>
+								<p>
+									<?php echo ucfirst($tracks[$i]['Track']['description']) ?>
+								</p>
 						 	</div>
 					<?php if (($i + 1) % 3 == 0 || $i == sizeof($tracks) - 1): ?>
 						</div>
@@ -78,17 +82,22 @@ $categoryTitle = $this->requestAction(Router::url(array('controller' => 'categor
 											break;
 									}
 
-									echo $this->Html->link($this->Html->image($url, array('class' => 'col-sm-12 img-responsive'))
-										, array('controller'=>'tracks', 'action'=>'view', $tracks[$i]['Track']['id'])
-										, array('escape'=>false));
+									echo $this->Html->link($this->Html->image($url
+											, array('class' => 'col-sm-12 img-responsive'))
+										, array('controller'=>'tracks'
+											, 'action'=>'view', $tracks[$i]['Track']['id'])
+										, array('escape'=>false, 'target'=>'_parent'));
 									?>
 								</div>
 								<h3>
-									<a href="/tracks/view/<?php echo $tracks[$i]['Track']['id']?>">
-										<?php echo $tracks[$i]['Track']['title'] ?>
+									<a href="/tracks/view/<?php echo $tracks[$i]['Track']['id']?>"
+										target="_parent">
+											<?php echo $tracks[$i]['Track']['title'] ?>
 									</a>
 								</h3>
-								<p><?php echo ucfirst($tracks[$i]['Track']['description']) ?></p>
+								<p>
+									<?php echo ucfirst($tracks[$i]['Track']['description']) ?>
+								</p>
 						 	</div>
 					<?php if (($i + 1) % 3 == 0 || $i == sizeof($tracks) - 1): ?>
 						</div>
